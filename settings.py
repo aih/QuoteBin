@@ -65,7 +65,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'Ari.urls'
+ROOT_URLCONF = 'QuoteBin.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), 'templates'),

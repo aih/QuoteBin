@@ -1,5 +1,5 @@
 {% autoescape off %}
-<div>
+<div style="width:310px;">
     <div class="qoutelist_head" style="background: #e5e5e5">
         <div class="title clickable" style="font-weight: bold; font-size: 12px; float:left; margin-top: 5px; margin-left: 5px; width: 260px">{{title}}</div>
         {% if is_owner %}
@@ -9,7 +9,7 @@
         <div class="clear"></div>
     </div>
     <div class="small" style="color: #737373; margin-left: 10px; margin-top: 5px;">{{author}} &nbsp; ({{created_date}})</div>
-    <div class="slide" style="margin-top: 5px;margin-left: 10px; border-left: 3px solid #C2E0E0; padding-left: 15px"">
+    <div class="slide" style="margin-top: 5px;margin-left: 10px; border-left: 3px solid #C2E0E0; padding-left: 15px; width:260px;">
         {{text|truncatewords:20}}<br/>
     </div>
         <!--div class="slider clickable">Share Via Email</div>

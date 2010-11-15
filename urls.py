@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     (r'^util/', include('utils.urls')),
     
     url(r'^logout$', logout, {'next_page': '/'}),
-    url(r'^$', mpage.LandingPage(), name='master_landing_page'),
+    url(r'^$', mpage.CreateQuotePage(), name='master_landing_page'),
     url(r'^cq$', mpage.CreateQuotePage(), name = 'master_cq_page'),
     url(r'^quote/(?P<quote>\w+)$', mpage.QuotePage(), name='master_quote_page'),
     url(r'^bundle/(?P<code>.+)$', mpage.LandingPage(), name='master_bundle_page'),
