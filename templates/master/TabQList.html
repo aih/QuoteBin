@@ -1,0 +1,35 @@
+<div class="TabQL" data-id="{{id}}">
+  {% autoescape off %}
+    <div class="qb" style="width:310px; border: 1px solid #C2E0E0;">
+      <div class="qb_head" style='background: #C2E0E0;'>
+        <div class="name" style="font-weight: bold; font-size: 12px; float:left; margin-top: 5px; margin-left: 5px">QUOTE BUNDLE</div>
+        <div class="icons bundle_delete clickable" data-id="{{delete}}" style="float:right"><img src="/static/images/master/icon_trash.png"/></div>
+        <div class="clear"></div>
+      </div>
+      <div class="qb_title" style="width: 300px; margin-left: 5px; margin-right: 5px;border-bottom: 2px solid #C2E0E0; margin-bottom: 5px">
+        <div class="qb_title_text" style="margin-left: 5px; margin-top: 5px; font-size: 18px; margin-bottom: 5px;">
+        {{display_title}}
+        </div>
+      </div>
+      
+    </div>
+    {% for e in elements %}
+      <div class="{% cycle 'elementEven' 'elementOdd' %}">
+     {{ e }}
+      </div>
+    {% endfor %}
+  
+      <div class="tabBtns">
+        {% if Prev %}
+        <div class="tabPrevBtn tabNav" data-id="{{Prev.data_id}}">
+          Previous
+        </div>
+        {% endif %}
+        {% if Next %}
+        <div class="tabNextBtn tabNav" data-id="{{Next.data_id}}">
+          Next
+        </div>
+        {% endif %}
+      </div>
+  {% endautoescape %}
+</div>

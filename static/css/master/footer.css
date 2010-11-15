@@ -1,0 +1,24 @@
+#lzFooter {
+  
+  height:22px;
+  clear:both;
+  font-size: 11px;
+  
+}
+
+.footerWrap {
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: 6px solid #C2E0E0;
+}
+
+#lzFooter .copyright {
+  float: left;
+  padding-left: 10px;  
+}
+
+#lzFooter .contact {
+  float: right;
+  padding-right: 10px;
+}

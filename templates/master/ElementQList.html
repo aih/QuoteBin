@@ -1,0 +1,28 @@
+{% autoescape off %}
+<div>
+    <div class="qoutelist_head" style="background: #e5e5e5">
+        <div class="title clickable" style="font-weight: bold; font-size: 12px; float:left; margin-top: 5px; margin-left: 5px; width: 260px">{{title}}</div>
+        {% if is_owner %}
+        <div class="icon quote_delete clickable" data-id="{{delete}}" style="float:right"><img src="/static/images/master/icon_del.png"/></div>
+        {% endif %}
+        <div class="icons" style="float:right"><a href="/quote/{{link}}"><img src="/static/images/master/icon_source.png"/></a></div>
+        <div class="clear"></div>
+    </div>
+    <div class="small" style="color: #737373; margin-left: 10px; margin-top: 5px;">{{author}} &nbsp; ({{created_date}})</div>
+    <div class="slide" style="margin-top: 5px;margin-left: 10px; border-left: 3px solid #C2E0E0; padding-left: 15px"">
+        {{text|truncatewords:20}}<br/>
+    </div>
+        <!--div class="slider clickable">Share Via Email</div>
+            <div class="slide2">
+                <form class="share_email">
+                    <label>From</label>
+                    <input type="text" name="from"/><br/>
+                    <label>To</label>
+                    <input type="text" name="to"/>
+                    <input type="hidden" name="data_id" value="{{share}}"/>
+                    <input type="submit" value="Share"/>
+                </form>
+            </div>
+    </div-->
+</div>
+{% endautoescape %}

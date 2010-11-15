@@ -1,0 +1,91 @@
+<div class="create_quote">
+    <div class="head">Create New Quote</div>
+    <div id="error"></div>
+    <form method="POST" actiop="." class="transform" id="cquote">
+        <div class="labelrowElem">
+            <label>Title</label>
+        </div>
+        <div class="rowElem">
+            <input type="text" class="text_input" name="title" id="id_title"/>
+        </div>
+        <div class="labelrowElem">
+            <label>Quote</lable>
+        </div>
+        <div class="rowElem">
+            <textarea name="text" id="id_text"></textarea>
+        </div>
+        <div class="labelrowElem">
+            <label>Author/Court</label>
+        </div>
+        <div class="rowElem">
+            <input type="text" class="text_input" name="author" id="id_author"/>
+        </div>
+        <div class="labelrowElem">
+            <label>Quote Type</label>
+        </div>
+        <div class="rowElem">
+            <select name="doctype" style="width: 100px;">
+                {% for id, name in types %}
+                <option value="{{id}}">{{name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="clear"></div>
+        <div class="labelrowElem">
+            <label>Tags</label>
+        </div>
+        <div class="rowElem">
+            <input type="text" class="text_input" name="tag" id="id_tag"/>
+        </div>
+        <div class="labelrowElem">
+            <label>Public</label>
+        </div>
+        <div class="rowElem">
+            <input type="checkbox" name="is_public" id="id_public">
+        </div>
+        {% if not user %}
+        <div class="labelrowElem">
+            <label>Email</label>
+        </div>
+        <div class="rowElem">
+            <input type="text" class="text_input" name="email" id="id_email"/>
+        </div>
+        <div class="labelrowElem">
+            <label>Code</label>
+        </div>
+        <div class="rowElem">
+            <input type="text" class="text_input" name="code" id="id_code"/>
+        </div>
+        {% endif %}
+        <div class="labelrowElem">
+            <label>References</label>
+        </div>
+        <div class="rowElem">
+            <input type="text" class="text_input" name="reference" class="reference"/>
+        </div>
+        <div id="add_reference" class="rowElem clickable"><img src="/static/images/master/reference.jpg"/></div>
+        
+        <input type="hidden" name="data_id" value="{{data_id}}"/>
+        <div class="rowElem">
+            <input type="image" src="/static/images/master/save.png" alt="Save">
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function(){
+       $('#cquote').live('submit', function(e){
+            e.preventDefault();
+            var data = $(this).serialize();
+            $.get(AJAX_URL, data, function(json){
+                 if(json.success){
+                    window.location = json.url;
+                 } else {
+                    $('#error').html(json.reason);
+                 }
+            });
+        });
+       $('#add_reference').live('click', function(){
+            $(this).before($('<div class="rowElem"><input type="text" class="text_input" name="reference" class="reference"/></div>'));
+       });
+    });
+</script>

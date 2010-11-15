@@ -1,0 +1,42 @@
+<div class="TabSide" data-id="{{id}}">
+  {% autoescape off %}
+    {{display_title}}
+    {% for e in elements %}
+      <div class="{% cycle 'elementEven' 'elementOdd' %}">
+     {{ e }}
+      </div>
+    {% endfor %}
+  
+      <div class="tabBtns">
+        {% if Prev %}
+        <div class="tabPrevBtn tabNav" data-id="{{Prev.data_id}}">
+          Previous
+        </div>
+        {% endif %}
+        {% if Next %}
+        <div class="tabNextBtn tabNav" data-id="{{Next.data_id}}">
+          Next
+        </div>
+        {% endif %}
+      </div>
+  {% endautoescape %}
+  
+  {% if user %}
+  <div class="add_bundle">
+    Add New Bundle
+  </div>
+  <form id="bundle_form">
+    <input type="text" class="side_text help_input" name="name" value="Name"/>
+    <input type="hidden" name="data_id" value="{{bundle}}"/>
+    <input type="image" src="/static/images/master/add.png" class="bundlebutton" alt="Add this bundle">
+  </form>
+  {% endif %}
+  <div class="hidden">
+    <form id="entercode_form">
+      <div class="error"></div>
+      <input type="text" class="side_text help_input" value="Enter Code" name="code"/>
+      <input type="hidden" name="data_id" value="{{data_id}}"/>
+      <input type="image" src="/static/images/master/submit.jpg" alt="Submit">
+    </form>
+  </div>
+</div>

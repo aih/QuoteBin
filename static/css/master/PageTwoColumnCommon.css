@@ -1,0 +1,21 @@
+.clear {
+  clear: both;
+  }
+
+.main_body {
+  width: 900px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+  /*border-left: 1px solid #a8a8a7;
+  border-right: 1px solid #a8a8a7;
+  /*height: 100%;*/
+  padding-bottom: 20px;
+  /*overflow:auto;*/
+}
+
+.col {
+  float: left;  
+  }

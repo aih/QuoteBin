@@ -1,0 +1,27 @@
+.header {
+    width:100%;
+    height: 100px;
+}
+
+.header_wrapper {
+    width: 900px;
+    margin-left:auto;
+    margin-right: auto;
+    background: url('/static/images/master/header.jpg') no-repeat;
+    height: 100px;
+    
+}
+.logo{
+    float:left;
+    
+}
+.user_links{
+    float:right;
+    margin-top:70px;
+    margin-right: 10px;
+    
+}
+
+.user_links, .user_links a{
+    color: #fff;
+}

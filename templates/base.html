@@ -1,0 +1,67 @@
+{% spaceless %}
+<!DOCTYPE html>
+<html>
+<script> document.domain = document.domain; </script>
+<head>
+  <title>{% block title %} Quote by Tabulaw {% endblock %}</title>
+  <meta name="description" content="Recommend movies, recieve recommendation on movies. Also, manage movies that you have seen or want to. Its all about movies." />
+  <meta name="keywords" content="movie, recommend, get recommendation, manage movies, review, movie rating, share revies, share movies" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf8" />
+  <link rel="stylesheet" type="text/css" href="/static/css/common/reset.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/base.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/master/footer.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/browser_specific/ie_specific.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/browser_specific/opera_specific.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/jqtransform.css" />
+  
+{% for c in css %}
+  <link rel="stylesheet" type="text/css" href="{{c}}" />
+{% endfor %}
+  <script type="text/javascript" src="/static/js/jquery.js"></script>
+  <script type="text/javascript" src="/static/js/base.js"></script>
+  <script  type="text/javascript" src="/static/js/css_browser_selector.js"></script>
+  <script  type="text/javascript" src="/static/js/jquery.jqtransform.js"></script>
+  {% if USER %}
+  <script type="text/javascript" src="/static/js/Orbited.js"></script>
+  <script type="text/javascript" src="/static/js/lzOrbited.js">  </script>
+  {% endif %}
+
+{% for j in js %}
+  <script type="text/javascript" src="{{j}}"></script>
+{% endfor %}
+  {% block extra_head %}
+  {% endblock %}
+<script type="text/javascript">
+	AJAX_URL = "{% url ajax_url %}";
+	{% if USER %}
+	USER = true;
+	{% else %}
+	USER = false;
+	{% endif %}
+	
+	$(function() {
+	  //find all form with class jqtransform and apply the plugin
+	  $("form.transform select").parent('.rowElem').jqTransform();
+	});
+</script>
+<script type="text/javascript">
+
+
+
+</script>
+
+</head>
+
+<body>
+  {% block js_templates %} {% endblock %}
+  <div id="wrapper">        
+        {% block header %} {% endblock %}
+        {% block main_body %} {% endblock %}
+		 <div class="push"></div>
+  </div>
+  {% include "master/footer.html" %}
+  <div class="clear"></div>
+</body>
+
+</html>
+{% endspaceless %}

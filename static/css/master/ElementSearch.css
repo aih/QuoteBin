@@ -1,0 +1,17 @@
+.search_quote{
+    margin-top: 40px;
+}
+
+.search_input {
+    float:left;
+}
+
+.search_btn {
+    float:right;
+    margin-right:52px;
+    margin-top:5px;
+}
+.search_btn input{
+    padding: 0px;
+    height: auto;
+}

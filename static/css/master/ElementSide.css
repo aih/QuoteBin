@@ -1,0 +1,27 @@
+.side_element a:hover, .side_element a.selected{
+    background: url('/static/images/master/side_hover.jpg') no-repeat;
+    color: white;
+    height:26px;
+    width: 214px;
+}
+
+.side_element a{
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    height:26px;
+    width: 214px;
+    padding-top: 7px;
+    padding-left: 5px;
+}
+
+.side_element{
+    width:214px;
+    height: 26px;
+    border-bottom: 1px solid #C2E0E0;
+}
+.elementOdd, .elementEven{
+    margin-top: 10px;
+    margin-bottom:10px;
+}

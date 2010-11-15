@@ -1,0 +1,22 @@
+<div class="login">
+    <div class="login_error hidden">asdasd</div>
+    <form class="login_form transform">
+        <div class="rowElem">
+            <label for="id_login_email">Email</label>
+        </div>
+        <div class="rowElem">
+            <input id="id_login_email" type="text" name="username"/>
+        </div>
+        <div class="rowElem">
+             <label for="id_login_pass">Password</label>
+        </div>
+        <div class="rowElem">
+            <input id="id_login_pass" type="password" name="password"/>
+        </div>
+        <div class="rowElem">
+            <input type="hidden" name="data_id" value="{{data_id}}"/>
+            <input type="hidden" name="ts" value="{{ts}}"/>
+            <input id="login_btn" type="image" value="submit" src="/static/images/login.png"/>
+        </div>
+    </form>
+</div>
