@@ -66,7 +66,7 @@
         <div class="rowElem">
             <input type="text" class="text_input" name="reference" class="reference"/>
         </div>
-        <div id="add_reference" class="rowElem clickable"><img src="/static/images/master/reference.jpg"/></div>
+        <div class="rowElem"><img id="add_reference" class="clickable" src="/static/images/master/reference.jpg"></img></div>
         
         <input type="hidden" name="data_id" value="{{data_id}}"/>
         <div class="rowElem">
@@ -87,8 +87,16 @@
                  }
             });
         });
+        $('.remove_ref').live('click', function(){       
+            $(this).closest('.rowElem').remove();
+        });
        $('#add_reference').live('click', function(){
-            $(this).before($('<div class="rowElem"><input type="text" class="text_input" name="reference" class="reference"/></div>'));
+            $(this).parent().before($('<div class="rowElem"><input type="text" class="text_input" name="reference" class="reference"/>
+                                                    <div style="float:right; margin-right: 120px; margin-top: 7px;">
+                                                        <img class="remove_ref clickable" src="/static/images/master/close.gif"/>
+                                                    </div>
+                                </div>'));
        });
+
     });
 </script>
