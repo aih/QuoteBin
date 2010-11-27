@@ -46,7 +46,7 @@ class SideTab(Tab):
     @staticmethod
     @cb.register
     def login_user(request):
-        code = request.GET.get('code')
+        code = request.GET.get('code').strip()
         print code
         try:
             email = M.EmailCode.objects.get(code=code).email
