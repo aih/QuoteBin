@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
-from django.forms.fields import email_re
+from django.core.validators import email_re #changed from django.forms.fields to use django 1.2
 from django.http import HttpResponse
 from django.conf import settings
 from django.db.models import Avg, Max, Min, Count

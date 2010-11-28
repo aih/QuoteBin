@@ -7,10 +7,17 @@
     width: 900px;
     margin-left:auto;
     margin-right: auto;
-    background: url('/static/images/master/header.jpg') no-repeat;
+    #background: url('/static/images/master/header.jpg') no-repeat;
     height: 100px;
-    
+    background-color: #BCDEDF;
 }
+
+.headerlogo {
+	float:left;
+	width:200px;
+	height:100px;
+}
+
 .logo{
     float:left;
     
@@ -25,3 +32,4 @@
 .user_links, .user_links a{
     color: #fff;
 }
+
