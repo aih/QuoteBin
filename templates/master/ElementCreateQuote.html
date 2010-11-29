@@ -3,7 +3,7 @@
     <div id="error"></div>
     <form method="POST" actiop="." class="transform" id="cquote">
         <div class="rowElem">
-           <a href="#" class="btn1" title="Save New Quote"><span><span><b>&nbsp;</b><u>Save</u></span></span></a>
+           <a href="#" class="btn1 form_submit" title="Save New Quote"><span><span><b>&nbsp;</b><u>Save</u></span></span></a>
         </div>
         <div class="labelrowElem">
             <label>Title</label>
@@ -70,15 +70,14 @@
         
         <input type="hidden" name="data_id" value="{{data_id}}"/>
         <div class="rowElem">
-             <a href="#" class="btn1" title="Save New Quote"><span><span><b>&nbsp;</b><u>Save</u></span></span></a>
+             <a href="#" class="btn1 form_submit" title="Save New Quote"><span><span><b>&nbsp;</b><u>Save</u></span></span></a>
         </div>
     </form>
 </div>
 <script type="text/javascript">
     $(function(){
-       $('#cquote').live('submit', function(e){
-            e.preventDefault();
-            var data = $(this).serialize();
+       $('#cquote a.form_submit').live('click', function(){
+            var data = $('form#cquote').serialize();
             $.get(AJAX_URL, data, function(json){
                  if(json.success){
                     window.location = json.url;

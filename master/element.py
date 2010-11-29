@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
-from django.core.validators import email_re #changed from django.forms.fields to use django 1.2
+#from django.core.validators import email_re #changed from django.forms.fields to use django 1.2
+from django.forms.fields import email_re
 from django.http import HttpResponse
 from django.conf import settings
 from django.db.models import Avg, Max, Min, Count
@@ -16,12 +17,15 @@ from utils.element import Element
 from utils.callback import Callback
 cb = Callback()
 
+def create_code(email):
+    return email.rsplit('.', 1)[0]
+    
 def send_mail(to, sender, subject, body):
     url = 'https://api.elasticemail.com/mailer/send'
     POST = {
-        'username': 'spicavigo@gmail.com',
-        'api_key': '362a1404-1619-47df-aceb-8477d041ea5f',
-        'from': 'yousuffauzan@gmail.com',
+        'username': 'aih@tabulaw.com',
+        'api_key': '3a5cfa40-68d5-4e10-aa03-0fcbee149c8d',
+        'from': 'aih@tabulaw.com',
         'from_name': sender or 'QuotesBin',
         'to' : ';'.join(to),
         'subject': subject,
@@ -115,7 +119,8 @@ class CreateQuoteElement(Element):
         em = None
         user = None
         if email:
-            em, created = M.EmailCode.objects.get_or_create(email=email, defaults={'code': email})
+            new_code = create_code(email)
+            em, created = M.EmailCode.objects.get_or_create(email=email, defaults={'code': new_code})
             em = em.code
             if not created and (code and code != em):
                 return JsonResponse(json.dumps({
@@ -124,7 +129,7 @@ class CreateQuoteElement(Element):
                 }))
             if created:
                 user = User.objects.create_user(username=email, email=email, password=em)
-            #    send_mail([email], 'yousuffauzan@hotmail.com', 'Your QuotesBin code', em)
+                send_mail([email], 'aih@tabulaw.com', 'Your QuotesBin code', em)
         if code:
             try:
                 em = M.EmailCode.objects.get(code=code)
