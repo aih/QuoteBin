@@ -1,0 +1,68 @@
+
+.btn1 {
+    float:right;
+    margin-right:2px;
+    margin-top:5px;
+    padding: 1px 1px;
+    cursor:pointer;
+    vertical-align:center;
+    background: #BCDEDF;
+    border: 1px solid #a0a0a0;
+}
+
+	
+.btn1 span {
+  height:23px;
+  font: bold 20px Arial;
+  text-align:center;
+  background-color:#BCDEDD;
+  color:#434343;
+  z-index:1;
+  margin-top:6px;
+  margin-left: 0px;
+  width:84px !important;
+  cursor:pointer;	
+  padding-bottom:0px;
+  border-left:1px solid #ccc;
+  border-right:1px solid #bbb;
+  white-space:nowrap;
+  }
+  
+* html .btn1 span {
+  padding-top:0;
+  }
+.btn1 span span {
+  background:none;
+  position:relative;
+  padding:0px .4em 0 .4em;
+  border-width:0;
+  border-top:1px solid #ccc;
+  border-bottom:1px solid #bbb;
+  }
+.btn1 b {
+  background:#e3e3e3;
+  position:absolute;
+  z-index:2;
+  bottom:0;
+  left:0;
+  width:100%;
+  overflow:hidden;
+  height:40%;
+  border-top:3px solid #eee;
+  }
+
+* html .btn1 b {
+  top:1px;
+  }
+.btn1 u {
+  text-decoration:none;
+  position:relative;
+  z-index:3;
+  }
+
+/* only needed if implementing separate hover state for buttons */
+.btn1:hover span{
+  cursor:pointer;
+  border-color:#9cf !important;
+  color:#000;
+  }
