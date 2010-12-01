@@ -274,6 +274,7 @@ a.jqTransformChecked { background-position: center bottom;}
 	display: block;
 	position: absolute;
 	right: 0px;
+	top: 0px;
 	width: 31px;
 	height: 31px;
 	background: url(/static/images/form/select_right.gif) no-repeat center center;

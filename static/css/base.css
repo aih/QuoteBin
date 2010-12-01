@@ -89,8 +89,8 @@ input.text_input {/*
   margin-bottom: 2px;
   padding: 2px;*/
   
-  border: 0;
-  background: url('/static/images/master/input.jpg') top left no-repeat; 
+  /* background: url('/static/images/master/input.jpg') top left no-repeat; */
+  border: 2px solid #C2E0E0;
   width: 250px; 
   height: 27px;
   padding-left: 3px;
@@ -98,12 +98,12 @@ input.text_input {/*
 }
 
 input.side_text {
-  border: 0;
-  background: url('/static/images/master/input_left.jpg') top left no-repeat; 
+  border: 2px solid #C2E0E0;
+  /*background: url('/static/images/master/input_left.jpg') top left no-repeat; */
   width: 216px; 
   height: 27px;
   padding-left: 3px;
-  font-size: 12px
+  font-size: 12px;
 }
 /*select{
   background: url('/static/images/master/select.jpg') top left no-repeat; 

@@ -39,6 +39,7 @@ CreateQuoteTabMedia = QuoteTabMedia
 class QListTabMedia(Media):
     template = 'master/TabQList.html'
     js = ['master/TabQList.js']
+    
 
 class QListElementMedia(Media):
     template = 'master/ElementQList.html'
@@ -51,6 +52,7 @@ class CreateQuoteElementMedia(Media):
 class QuoteElementMedia(Media):
     template = 'master/ElementQuote.html'
     js = ['master/ElementQuote.js']
+    
     
 class SideElementMedia(Media):
     template='master/ElementSide.html'

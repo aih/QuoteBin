@@ -1,18 +1,19 @@
-<div class="create_quote">
-    <div class="head">Create New Quote</div>
-    <div id="error"></div>
+<div class="create_quote"> 
+	<a href="#" class="btn1" id="saveq" title="Save New Quote"><span><span><b>&nbsp;</b><u>Save Quote</u></span></span></a>   
+	<div id="error"></div>
     <form method="POST" action="." class="transform" id="cquote">
-        <div class="rowElem">
-           <a href="#" class="btn1" id="saveq" title="Save New Quote"><span><span><b>&nbsp;</b><u>Save</u></span></span></a>
+        <input type="checkbox" name="is_public" id="id_public">
+		<div class="labelPublic">
+            <label>Make Quote Public</label>
         </div>
-        <div class="labelrowElem">
+		<div class="labelrowElem">
             <label>Title</label>
         </div>
         <div class="rowElem">
             <input type="text" class="text_input" name="title" id="id_title"/>
         </div>
         <div class="labelrowElem">
-            <label>Quote</lable>
+            <label>Quote Text</lable>
         </div>
         <div class="rowElem">
             <textarea name="text" id="id_text"></textarea>
@@ -24,8 +25,8 @@
             <input type="text" class="text_input" name="author" id="id_author"/>
         </div>
         <div class="labelrowElem">
-            <label>Quote Type</label>
-        </div>
+            <label>Quote Source</label>
+		</div>
         <div class="rowElem">
             <select name="doctype" style="width: 100px;">
                 {% for id, name in types %}
@@ -34,45 +35,40 @@
             </select>
         </div>
         <div class="clear"></div>
-        <div class="labelrowElem">
-            <label>Tags</label>
-        </div>
-        <div class="rowElem">
+		<div class="labelrowElem">
+			<label>Tags (comma separated)</label>
+		</div>
+		<div class="rowElem">
             <input type="text" class="text_input" name="tag" id="id_tag"/>
-        </div>
-        <div class="labelrowElem">
-            <label>Public</label>
-        </div>
-        <div class="rowElem">
-            <input type="checkbox" name="is_public" id="id_public">
         </div>
         {% if not user %}
         <div class="labelrowElem">
-            <label>Email</label>
+            <label>Your Email (to send you a Login Code)</label>
         </div>
         <div class="rowElem">
             <input type="text" class="text_input" name="email" id="id_email"/>
         </div>
         <div class="labelrowElem">
-            <label>Code</label>
+            <label>Your Login Code</label>
         </div>
         <div class="rowElem">
             <input type="text" class="text_input" name="code" id="id_code"/>
         </div>
         {% endif %}
         <div class="labelrowElem">
-            <label>References</label>
+            <label>Reference(s)</label>
         </div>
         <div class="rowElem">
             <input type="text" class="text_input" name="reference" class="reference"/>
         </div>
-        <div class="rowElem"><img id="add_reference" class="clickable" src="/static/images/master/reference.jpg"></img></div>
-        
-        <input type="hidden" name="data_id" value="{{data_id}}"/>
-        <div class="rowElem">
-             <a href="#" class="btn1" title="Save New Quote" id="saveq"><span><span><b>&nbsp;</b><u>Save</u></span></span></a>
+		<div class="rowElem">
+			<a href="#" class="btn1" id="add_reference" title="Add Another Reference"><span><span><b>&nbsp;</b><u>+</u></span></span></a>
         </div>
+		<input type="hidden" name="data_id" value="{{data_id}}"/>
     </form>
+	<div class="rowElem">
+			<a href="#" class="btn1" id="saveq" title="Save New Quote"><span><span><b>&nbsp;</b><u>Save Quote</u></span></span></a>
+    </div>
 </div>
 <script type="text/javascript">
     $(function(){
