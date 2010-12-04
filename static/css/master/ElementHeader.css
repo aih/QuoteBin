@@ -1,35 +1,42 @@
 .header {
     width:100%;
-    height: 100px;
+    height: 60px;
 }
 
 .header_wrapper {
-    width: 900px;
-    margin-left:auto;
-    margin-right: auto;
-    #background: url('/static/images/master/header.jpg') no-repeat;
-    height: 100px;
+	position: absolute;
+	width: 100%;
+    left: 0px;
+    height: 60px;
     background-color: #BCDEDF;
 }
 
-.headerlogo {
+.header_logo {
 	float:left;
-	width:200px;
-	height:100px;
+	margin-left:30px;
+	margin-top:15px;
+	
 }
 
-.logo{
-    float:left;
-    
+.header_right{
+	margin-right: 10px;
+	height: 60px;
 }
+
 .user_links{
-    float:right;
-    margin-top:70px;
-    margin-right: 10px;
-    
+	float: right;
+    margin-top: 45px;
 }
 
 .user_links, .user_links a{
     color: #fff;
+}
+
+.create_new_quote{
+	position:absolute;
+	top: 60px;
+	left: 0px;
+	height:20px;
+	width: 100px;
 }
 

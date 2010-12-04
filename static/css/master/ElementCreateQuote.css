@@ -3,31 +3,71 @@
    
 }
 
+.labelPublic{
+	margin-bottom:25px;
+}
 .create_quote form{
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 }
 
 .create_quote label{
     color: #000;
     font-size: 12px;
     font-weight: bold;
+	max-width:100px;
 }
 
 .create_quote .btn1{
 	float: left;
 	margin-top: 0px;
 	margin-right: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .create_quote .btn1 span{
 	font-size: 15px;
 }
 
-.labelrowElem{
-	margin-top: 23px;
+.rowElem{
+   display: block;
+   min-height: 40px;
+   margin-bottom:25px;
 }
 
-.rowElem{
-   margin-top: 5px;
+.rowElem .rowElemLeft{
+	display:inline;
+	float:left;
 }
+
+.rowElem .rowElemRight{
+	display:inline;
+	float:right;
+}
+
+.quoteInput{
+	margin-top:2px;
+	display:inline;
+}
+
+#id_title{
+	height:20px;
+}
+
+.saveRowElem{
+	display: block;
+   	margin-bottom:25px;
+	width:100px;
+}
+
+.rowElem2{
+	height:200px;
+}
+
+#referenceAdded{
+	display:block;
+	margin-top:10px;
+	margin-right:0px;
+	margin-bottom:25px;
+}
+
+

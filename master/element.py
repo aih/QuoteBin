@@ -26,7 +26,7 @@ def send_mail(to, sender, subject, body):
         'username': 'aih@tabulaw.com',
         'api_key': '3a5cfa40-68d5-4e10-aa03-0fcbee149c8d',
         'from': 'aih@tabulaw.com',
-        'from_name': sender or 'QuotesBin',
+        'from_name': sender or 'Quote',
         'to' : ';'.join(to),
         'subject': subject,
         'body_text': body

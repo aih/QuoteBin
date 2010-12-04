@@ -105,13 +105,14 @@ input.side_text {
   padding-left: 3px;
   font-size: 12px;
 }
-/*select{
-  background: url('/static/images/master/select.jpg') top left no-repeat; 
-}*/
+
+.add_bundle {
+	width: 225px;
+}
 
 textarea{
   border: 1px solid #C2E0E0;
-  height: 100px;
+  height: 200px;
   width: 400px;
 }
 .push{

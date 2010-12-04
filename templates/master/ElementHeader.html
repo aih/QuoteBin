@@ -1,13 +1,15 @@
 <div class="header">
     <div class="header_wrapper">
-	<img src="/static/images/master/tabulaw_logo.jpg" class="headerlogo"></img>
-            <div class="user_links">
-                <a href="/">Home</a>
-                {% if user %}
-                |
-                <a href="/logout">Logout</a>
-                {% endif %}
-            </div>
-
+		<img src="/static/images/master/tabulaw_logo.png" class="header_logo"></img>
+		<div class="header_right">
+			<div class="user_links">
+				<a href="/">Home</a>
+					{% if user %}
+					|
+					<a href="/logout">Logout</a>
+                	{% endif %}
+			</div>
+			<button class="create_new_quote"><a id="create_new_quote" href="/cq" title="Create Quote">NEW&nbsp;QUOTE</a></button>
+		</div>
     </div>
 </div>

@@ -1,7 +1,5 @@
 .side_element a:hover, .side_element a.selected{
-/*
-    background: url('/static/images/master/side_hover.jpg') no-repeat;
-*/  
+ 
 	color: white;
     background-color: #BCDEDF;
     height:26px;

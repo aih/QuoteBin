@@ -13,7 +13,7 @@ class LandingPage(Page):
     
     def __init__(self):
         self.header = B.HeaderBox
-        self.boxes = [B.SideBox, B.SearchBox, B.QListBox]
+        self.boxes = [B.SearchBox, B.SideBox, B.QListBox]
         super(LandingPage, self).__init__(login_required=False)
     
     def view(self, request, *args, **kwargs):
@@ -25,7 +25,7 @@ class CreateQuotePage(Page):
     
     def __init__(self):
         self.header = B.HeaderBox
-        self.boxes = [B.SideBox, B.SearchBox, B.CreateQuoteBox]
+        self.boxes = [B.SearchBox, B.SideBox, B.CreateQuoteBox]
         super(CreateQuotePage, self).__init__(login_required=False)
         
     def view(self, request, *args, **kwargs):
@@ -37,7 +37,7 @@ class QuotePage(Page):
     
     def __init__(self):
         self.header = B.HeaderBox
-        self.boxes = [B.SideBox, B.SearchBox, B.QuoteBox]
+        self.boxes = [B.SearchBox, B.SideBox, B.QuoteBox]
         super(QuotePage, self).__init__(login_required=False)
         
     def view(self, request, *args, **kwargs):
@@ -49,7 +49,7 @@ class SearchPage(Page):
     
     def __init__(self):
         self.header = B.HeaderBox
-        self.boxes = [B.SideBox, B.SearchBox, B.SearchResultBox,]
+        self.boxes = [B.SearchBox, B.SideBox, B.SearchResultBox,]
         super(SearchPage, self).__init__(login_required=False)
         
     def view(self, request, *args, **kwargs):
