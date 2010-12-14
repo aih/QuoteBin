@@ -136,12 +136,12 @@
 
         });
         $('.remove_ref').live('click', function(){       
-            $(this).closest('.rowElem').remove();
+            $(this).closest('#referenceAdded').remove();
         });
        $('#add_reference').live('click', function(){
             $(this).parent().before($('<div class="quoteInput" id="referenceAdded"><input type="text" class="text_input" name="reference"/>
                                                     <div style="float:right; margin-right: 120px; margin-top: 7px;">
-                                                        <img class="remove_ref clickable" src="/static/images/master/close.gif"/>
+                                                        <a class="remove_ref clickable" title="Remove Reference">&times</a>
                                                     </div>
                                 </div>'));
             return false;

@@ -70,4 +70,7 @@
 	margin-bottom:25px;
 }
 
-
+.remove_ref{
+	font-size: 18px;
+	color: red;	
+}
