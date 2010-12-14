@@ -47,6 +47,7 @@ class QListElementMedia(Media):
 
 class CreateQuoteElementMedia(Media):
     template = 'master/ElementCreateQuote.html'
+    js = ['jquery.validate.pack.js']
     css = ['master/ElementCreateQuote.css']
 
 class QuoteElementMedia(Media):

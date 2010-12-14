@@ -85,3 +85,7 @@ INSTALLED_APPS = (
 )
 
 LOGIN_URL='/'
+
+try:
+  from local_settings import *
+except:pass

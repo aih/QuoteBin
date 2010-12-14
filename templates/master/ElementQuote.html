@@ -13,7 +13,7 @@
     <div style="float:left; margin-right: 8px; font-size: 11px; color: #7e7e7e">{{tag.text|upper}}</div>
     {% endfor %}
     <div class="clear"></div>
-    {% if user %}
+    {% if user and bundles|length %}
     <form class="add_to_bundle transform" style="margin-top:10px;">
         <label style="color: #363637; font-size: 12px; font-weight: bold;">Add to bundle</label>
         <div class="rowElem" style="margin-top: 7px">
@@ -25,6 +25,7 @@
         </div>
         <input type="hidden" name="data_id" value="{{data_id}}"/>
         <input type="hidden" name="quote" value="{{id}}"/>
+        <input type='submit' value="Add to this bundle"/>
     </form>
     {% endif %}
 </div>
