@@ -16,7 +16,7 @@
         </div>
         <div class="rowElem">
         	<div class="labelRowElem">
-            	<input id="id_title" class="side_text help_input" value="Quote Title..." type='text' name='q' value='{{q}}'/>
+            	<input id="id_title" class="side_text help_input" value="Quote Title..." type='text' name='title'/>
         	</div>
 			<div class="quoteInput">
             	<textarea name="text" id="id_text"></textarea>
@@ -35,7 +35,7 @@
         			</select>
 				</div>
 			</div>
-			<div class="rowElemRight">
+			<div class="rowElemLeft" style="margin-left: 10px">
             	<div class="labelRowElem">
             		<label>Author/Court</label>
 				</div>
@@ -90,7 +90,7 @@
 </div>
 <script type="text/javascript">
     $(function(){
-       $('#saveq').live('click', function(){
+       /*$('#saveq').live('click', function(){
            var data = $('form#cquote').serialize();
 	   $.get(AJAX_URL, data, function(json){
                  if(json.success){
@@ -99,6 +99,41 @@
                     $('#error').html(json.reason);
                  }
             });
+        });*/
+        $('#saveq').live('click', function(){if($('#id_title').val() == 'Quote Title...'){$('#id_title').val('');}$('#cquote').submit(); return false;});
+        $('#cquote').validate({
+            debug: true,
+            submitHandler: function(form) {
+                            var data = $('form#cquote').serialize();
+                            $.get(AJAX_URL, data, function(json){
+                                if(json.success){
+                                    window.location = json.url;
+                                } else {
+                                    $('#error').html(json.reason);
+                                }
+                            });
+                        },
+            rules: {    
+                        'title': 'required',
+                        'text': 'required',
+                        'email': {
+                                email: true,
+                                required: function(element){ !($('#id_public:checked').length || $('#id_email').val() != '');}
+                                
+                        },
+                        'code': {
+                                required: function(element){ !($('#id_public:checked').length || $('#id_code').val() != '');}
+                                
+                        }
+                        
+                    },
+        messages: {
+                    'title': 'You must provide a title for your quote',
+                    'text': 'Some quote is required',
+                    'email': '<br/>For private quotes, either provide an email (your QuoteBin code will be sent here) or your QuoteBin code',
+                    'code': '<br/>For private quotes, either provide an email (your QuoteBin code will be sent here) or your QuoteBin code'
+                }
+
         });
         $('.remove_ref').live('click', function(){       
             $(this).closest('.rowElem').remove();
@@ -109,6 +144,7 @@
                                                         <img class="remove_ref clickable" src="/static/images/master/close.gif"/>
                                                     </div>
                                 </div>'));
+            return false;
        });
 
     });

@@ -19,10 +19,10 @@ $(function() {
        $(this).removeClass('help_input').val(' ');
        
     });
-    $('#entercode_form').live('submit', function(e){
+    $('#submit_code_form').live('click', function(e){
        e.preventDefault();
-       var that = this;
-       var data = $(this).serialize();
+       var that = $('#entercode_form');
+       var data = $(that).serialize();
        $.get(AJAX_URL, data, function(response){
             if (response.success){
                 window.location = window.location;
@@ -32,12 +32,13 @@ $(function() {
             }
             
        });
+        return false;
        
     });
-    $('#bundle_form').live('submit', function(e){
+    $('#submit_bundle_form').live('click', function(e){
        e.preventDefault();
-       var that = this;
-       var data = $(this).serialize();
+       var that = $('#bundle_form');
+       var data = $(that).serialize();
        $.get(AJAX_URL, data, function(response){
             if (response.success){
                 $('.TabSide').replaceWith(response.html);
@@ -46,6 +47,6 @@ $(function() {
             }
             
        });
-       
+      return false; 
     });
 });

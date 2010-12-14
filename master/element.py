@@ -17,6 +17,11 @@ from utils.element import Element
 from utils.callback import Callback
 cb = Callback()
 
+def shorten(url):
+    params = urllib.urlencode({'security_token': None, 'url': url})
+    f = urllib.urlopen('http://goo.gl/api/shorten', params)
+    return json.loads(f.read())['short_url']
+
 def create_code(email):
     return email.rsplit('.', 1)[0]
     
@@ -60,7 +65,6 @@ class SideElement(Element):
     @staticmethod
     @cb.register
     def get_quotes(request):
-        print request.GET
         code = request.GET.get('code')
         if code == 'All':
             ids = M.Quote.objects.filter(is_public=True).order_by('-update_date')[:10]
@@ -107,6 +111,7 @@ class CreateQuoteElement(Element):
     @staticmethod
     @cb.register
     def submit(request):
+        print request.__dict__
         text = request.GET.get('text')
         title = request.GET.get('title') or text[:20] + '...'
         author = request.GET.get('author')
@@ -159,6 +164,7 @@ class QuoteElement(Element):
                         'text': self.client.text,
                         'author': self.client.author,
                         'id': self.client.id,
+                        'link': shorten(settings.SITE_URL + '/quote/' + self.client.link),
                         'tags': self.client.tag_set.all(),
                         'created_date': self.client.created_date,
                         'share': '%s+%d' % (share.key, self.client.id,),
