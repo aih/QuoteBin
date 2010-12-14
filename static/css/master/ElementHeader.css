@@ -1,13 +1,13 @@
 .header {
     width:100%;
-    height: 60px;
+    height: 90px;
 }
 
 .header_wrapper {
 	position: absolute;
 	width: 100%;
     left: 0px;
-    height: 60px;
+    height: 90px;
     background-color: #BCDEDF;
 }
 
@@ -20,12 +20,12 @@
 
 .header_right{
 	margin-right: 10px;
-	height: 60px;
+	height: 90px;
 }
 
 .user_links{
 	float: right;
-    margin-top: 45px;
+    margin-top: 70px;
 }
 
 .user_links, .user_links a{
@@ -34,23 +34,18 @@
 
 .create_new_quote{
 	position:absolute;
-	top: 65px;
+	top: 70px;
 	left: 30px;
 	height:20px;
-	width: 100px;
 }
 
 .create_new_quote a {
-  font: italic underline 100%/1.0 Georgia, serif;
+  font: italic 100%/1.0 Georgia, serif;
   font-size: 16px;
 }
 
 .create_new_quote a:link { 
   color: #0000FF;
-}
-
-.create_new_quote a:visited {
-  color: #FF0000;
 }
 
 .create_new_quote a:hover {
@@ -61,4 +56,4 @@
   color: #00FF66;
 }
 
-}
+
