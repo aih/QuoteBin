@@ -85,7 +85,7 @@ INSTALLED_APPS = (
 )
 
 LOGIN_URL='/'
-
+SITE_URL = 'http://quotebin.tabulaw.com'
 try:
   from local_settings import *
 except:pass

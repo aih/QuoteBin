@@ -2,7 +2,7 @@
 <div style="width: 400px">
     <div class="quote_head" style="width: 400px">
         <div class="quote_title" style="margin-left: 5px; font-weight: bold; font-size:14px;float:left">{{title}}</div>
-        <div class="quote_author" style="float:right; font-size:11px; color: #7e7e7e"">{{author}}</div>
+        <div class="quote_author" style="float:right; font-size:11px; color: #7e7e7e">{{author}}</div>
         <div class="clear"></div>
     </div>
     <div class="quote_text" style="font-size: 13px; margin-bottom: 5px;border-top: 2px solid #C2E0E0; border-bottom: 2px solid #C2E0E0; margin-top: 10px; padding-top: 15px; padding-left: 20px; padding-bottom: 15px;">
@@ -27,6 +27,19 @@
         <input type="hidden" name="quote" value="{{id}}"/>
         <input type='submit' value="Add to this bundle"/>
     </form>
-    {% endif %}
+   {% endif %}
+   <div class="share-links">
+    Share:
+    
+    <a class="twitter" target="_blank" title="Share on Twitter" href="http://twitter.com/?status={{ link|urlencode }}">Twitter</a> | 
+    
+    <a class="facebook" target="_blank" title="Share on Facebook" href="http://facebook.com/share.php?u={{ link|urlencode }}">Facebook</a> | 
+    
+    <a class="digg" target="_blank" title="Digg This" href="http://digg.com/submit?url={{ link|urlencode }}&title={{ title|urlencode }}&topic=law">Digg</a> | 
+    
+    <a class="reddit" target="_blank" title="Submit to Reddit" href="http://reddit.com/submit?url={{ link|urlencode }}">Reddit</a> | 
+
+    <a class="buzz" target="_blank" title="Submit to Google Buzz" href="http://www.google.com/buzz/post?message={{ title|urlencode }}&url={{ link|urlencode }}">Buzz</a>
+    </div>
 </div>
 {% endautoescape %}
