@@ -3,13 +3,30 @@
 		<img src="/static/images/master/tabulaw_logo.png" class="header_logo"></img>
 		<div class="header_right">
 			<div class="user_links">
-				<a href="/">Home</a>
+				<a href="/"> Home</a>
 					{% if user %}
 					|
 					<a href="/logout">Logout</a>
+					{% else %}
+					 | <a href="get_code">Get QuoteBin Code</a> | <a href="login">Enter QuoteBin Code</a>
                 	{% endif %}
+                	
+                    
 			</div>
+			{% if show_cq %}
 			<div class="create_new_quote"><a id="create_new_quote" href="/cq" title="Create Quote"><img src="static/images/master/NewQuote.png"/>NEW&nbsp;QUOTE&nbsp;</a></div>
+			{% endif %}
+            
 		</div>
+		<div class="hidden">
+            <form id="get_code_form">
+                <div class="error"></div>
+                <input type="text" class="side_text help_input" value="Enter Email Address" name="email" id="id_email_code"/>
+                <input type="hidden" name="data_id" value="{{data_id}}"/>
+                <input type="submit" value="Get Code"/>
+            </form>
+        </div>
     </div>
+    <div class="clear"></div>
+    <div id="flash_messages" style="position:absolute; top:95px; margin-left: 20px;" class="info hidden"></div>
 </div>

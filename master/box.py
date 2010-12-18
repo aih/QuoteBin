@@ -15,6 +15,9 @@ cb = Callback()
 class HeaderBox(Box):
     _tab_class = [T.HeaderTab]
     title = ''
+    def __init__(self, request, * args, ** kwargs):
+        self.client = request.path
+        super(HeaderBox, self).__init__(request, * args, ** kwargs)
 
 class SideBox(Box):
     _tab_class = [T.SideTab]

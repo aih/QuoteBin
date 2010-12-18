@@ -13,6 +13,7 @@ import xmlrpclib
 import time
 import ast
 import urllib2, urllib
+from django.core.urlresolvers import reverse, resolve
 from utils.element import Element
 from utils.callback import Callback
 cb = Callback()
@@ -44,14 +45,31 @@ def share(request):
     quote = M.Quote.objects.get(id=int(id))
     to = request.GET.get('to').split(',')
     subject = request.GET.get('subject') or 'Quote:' + quote.title
-    body = request.GET.get('body') or 'http://localhost:8000/quote/' + str(id) 
+    body = request.GET.get('body') or 'http://quotebin.tabulaw.com/quote/' + str(id) 
     sender = request.GET.get('from')
     send_mail(to, sender, subject, body)
     return JsonResponse(json.dumps('ok'))
     
 class HeaderElement(Element):
     def _prepare(self):
-        self.context = {'user': self.user.is_authenticated()}
+        show_cq = True
+        if self.client in [reverse("master_cq_page"), reverse('master_landing_page')]:
+            show_cq = False
+        self.context = {'user': self.user.is_authenticated(), 'data_id': self.get_code.key, 'show_cq': show_cq}
+    
+    @staticmethod
+    @cb.register
+    def get_code(request):
+        email = request.GET.get('email')
+        if email_re.match(email):
+            new_code = create_code(email)
+            em, created = M.EmailCode.objects.get_or_create(email=email, defaults={'code': new_code})
+            em = em.code
+            if created:
+                user = User.objects.create_user(username=email, email=email, password=em)
+                send_mail([email], 'aih@tabulaw.com', 'Your QuotesBin code', em)
+            return JsonResponse(json.dumps({'success': True}))
+        return JsonResponse(json.dumps({'success': False, 'reason': 'Invalid Email'}))
 
 class SideElement(Element):
     def _prepare(self):
@@ -60,6 +78,8 @@ class SideElement(Element):
         if isinstance(self.client, M.QuoteBin):
             key = self.client.name
             code = self.client.id
+        else:
+            code = code.replace(' ','')
         self.context = {'name': key, 'data_id': self.get_quotes.key, 'code': code}
 
     @staticmethod
