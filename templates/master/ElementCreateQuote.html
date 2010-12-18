@@ -102,7 +102,7 @@
         });*/
         $('#saveq').live('click', function(){if($('#id_title').val() == 'Quote Title...'){$('#id_title').val('');}$('#cquote').submit(); return false;});
         $('#cquote').validate({
-            debug: true,
+            debug: false,
             submitHandler: function(form) {
                             var data = $('form#cquote').serialize();
                             $.get(AJAX_URL, data, function(json){
@@ -118,11 +118,11 @@
                         'text': 'required',
                         'email': {
                                 email: true,
-                                required: function(element){ !($('#id_public:checked').length || $('#id_email').val() != '');}
+                                required: function(element){ return !($('#id_public:checked').length || $('#id_code').val() != '');}
                                 
                         },
                         'code': {
-                                required: function(element){ !($('#id_public:checked').length || $('#id_code').val() != '');}
+                                required: function(element){ return !($('#id_public:checked').length || $('#id_email').val() != '');}
                                 
                         }
                         

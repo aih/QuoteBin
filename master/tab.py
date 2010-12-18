@@ -24,9 +24,9 @@ class SideTab(Tab):
     
     def _prepare(self):
         if self.user.is_anonymous():
-            self.ids = ['All', 'MyQuotes']
+            self.ids = ['All', 'My Quotes']
         else:
-            self.ids = ['All', 'MyQuotes'] + list(M.QuoteBin.objects.filter(user=self.user))
+            self.ids = ['All', 'My Quotes'] + list(M.QuoteBin.objects.filter(user=self.user))
         self.context['data_id'] = self.login_user.key
         self.context['user'] = self.user.is_authenticated()
         self.context['bundle'] = self.bundle.key
