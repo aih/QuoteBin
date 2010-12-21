@@ -69,7 +69,7 @@ url_names = ['professor_prof_page',
              'master_landing_page',
              'master_cq_page',
              'master_quote_page',
-             'master_bundle_page',
+             'master_project_page',
              ]
 
 

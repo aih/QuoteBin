@@ -15,7 +15,7 @@ $(function() {
         });*/
     //} else {
     //$('.help_input').val($('.help_input').val());
-    $('.bundle_delete').live('click', function(){
+    $('.project_delete').live('click', function(){
        var data = $(this).attr('data-id');
        if(!data){
         return;

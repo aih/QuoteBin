@@ -1,5 +1,5 @@
 $(function() {
-    $('.add_to_bundle').live('submit', function(e){
+    $('.add_to_project').live('submit', function(e){
        e.preventDefault();
        var that = this;
        var data = $(this).serialize();

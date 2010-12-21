@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     url(r'^$', mpage.CreateQuotePage(), name='master_landing_page'),
     url(r'^cq$', mpage.CreateQuotePage(), name = 'master_cq_page'),
     url(r'^quote/(?P<quote>\w+)$', mpage.QuotePage(), name='master_quote_page'),
-    url(r'^bundle/(?P<code>.+)$', mpage.LandingPage(), name='master_bundle_page'),
+    url(r'^project/(?P<code>.+)$', mpage.LandingPage(), name='master_project_page'),
     url(r'^search$', mpage.SearchPage(), name='master_search_page')
 
 )

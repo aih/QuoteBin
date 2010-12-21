@@ -3,31 +3,25 @@
 		<img src="/static/images/master/tabulaw_logo.png" class="header_logo"></img>
 		<div class="header_right">
 			<div class="user_links">
-				<a href="/"> Home</a>
+				<a href="/">Home</a>
 					{% if user %}
-					|
+					&nbsp;|&nbsp;
 					<a href="/logout">Logout</a>
 					{% else %}
-					 | <a href="get_code">Get QuoteBin Code</a> | <a href="login">Enter QuoteBin Code</a>
+					 |&nbsp;<a href="login">Sign&nbsp;In</a>&nbsp;|&nbsp;<a href="get_code">Register</a>
                 	{% endif %}
-                	
-                    
 			</div>
-<<<<<<< HEAD
-			<div class="create_new_quote"><a id="create_new_quote" href="/cq" title="Create Quote"><img src="/static/images/master/NewQuote.png"/>NEW&nbsp;QUOTE&nbsp;</a></div>
-=======
 			{% if show_cq %}
-			<div class="create_new_quote"><a id="create_new_quote" href="/cq" title="Create Quote"><img src="static/images/master/NewQuote.png"/>NEW&nbsp;QUOTE&nbsp;</a></div>
+			<div class="create_new_quote"><img src="/static/images/master/new_quote.png"/><a id="create_new_quote" href="/cq" title="Create Quote">NEW&nbsp;QUOTE&nbsp;</a></div>
 			{% endif %}
-            
->>>>>>> b483776e993614c920de6580104cdb8027701016
 		</div>
 		<div class="hidden">
             <form id="get_code_form">
                 <div class="error"></div>
-                <input type="text" class="side_text help_input" value="Enter Email Address" name="email" id="id_email_code"/>
+		Enter an email address to send your password.<br/>
+                <input type="text" class="side_text help_input" value="Email Address..." name="email" id="id_email_code"/>
                 <input type="hidden" name="data_id" value="{{data_id}}"/>
-                <input type="submit" value="Get Code"/>
+                <input type="submit" value="Submit"/>
             </form>
         </div>
     </div>

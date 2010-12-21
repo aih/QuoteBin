@@ -1,4 +1,4 @@
-.add_bundle{
+.add_project{
     margin-top: 50px;
     margin-bottom: 10px;
     font-size: 13px;
@@ -6,7 +6,7 @@
     font-weight: bold;
 }
 
-.bundlebutton{
+.projectbutton{
     float:right;
     margin-top: 5px;
     

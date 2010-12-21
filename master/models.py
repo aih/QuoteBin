@@ -8,6 +8,7 @@ def hash(id):
     return h.hexdigest()
 # Create your models here.
 DOC_CHOICES = (
+		('NT', 'Note'),
                 ('CO', 'Court Opinion'),
                 ('ST', 'Statute'),
                 ('RL', 'Regulation'),

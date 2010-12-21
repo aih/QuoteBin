@@ -22,14 +22,14 @@
   {% endautoescape %}
   
   {% if user %}
-  <div class="add_bundle">
-    Add&nbsp;Quote&nbsp;Bundle
-  	<form id="bundle_form">
-    	<input type="text" class="side_text help_input" name="name" value="Name"/>
-    	<input type="hidden" name="data_id" value="{{bundle}}"/>
+  <div class="add_project">
+    New&nbsp;Project
+  	<form id="project_form">
+    	<input type="text" class="side_text help_input" name="name" value="Project&nbsp;name..."/>
+    	<input type="hidden" name="data_id" value="{{project}}"/>
   	</form>
-	<div class="addbundlebtn">
-		<a id='submit_bundle_form' href="javascript:{}"  class="btn1" title="Add This Bundle"><span><span><b>&nbsp;</b><u>Add</u></span></span></a>
+	<div class="addprojectbtn">
+		<a id='submit_project_form' href="javascript:{}"  class="btn1" title="New Project"><span><span>Create</span></span></a>
   	</div>
   </div>
   {% endif %}

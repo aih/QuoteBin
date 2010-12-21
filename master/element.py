@@ -188,13 +188,13 @@ class QuoteElement(Element):
                         'tags': self.client.tag_set.all(),
                         'created_date': self.client.created_date,
                         'share': '%s+%d' % (share.key, self.client.id,),
-                        'data_id': self.add_to_bundle.key,
-                        'bundles': M.QuoteBin.objects.filter(user=self.user),
+                        'data_id': self.add_to_project.key,
+                        'projects': M.QuoteBin.objects.filter(user=self.user),
                         'user': self.user.is_authenticated()}
     
     @staticmethod
     @cb.register
-    def add_to_bundle(request):
+    def add_to_project(request):
         id = request.GET.get('name')
         quote = request.GET.get('quote')
         qbin = M.QuoteBin.objects.get(id = int(id))

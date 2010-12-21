@@ -35,15 +35,15 @@ $(function() {
         return false;
        
     });
-    $('#submit_bundle_form').live('click', function(e){
+    $('#submit_project_form').live('click', function(e){
        e.preventDefault();
-       var that = $('#bundle_form');
+       var that = $('#project_form');
        var data = $(that).serialize();
        $.get(AJAX_URL, data, function(response){
             if (response.success){
                 $('.TabSide').replaceWith(response.html);
             } else {
-                $(that).find('.error').html('Invalid Bundle Name');
+                $(that).find('.error').html('Invalid project Name');
             }
             
        });

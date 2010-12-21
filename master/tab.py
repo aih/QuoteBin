@@ -29,11 +29,11 @@ class SideTab(Tab):
             self.ids = ['All', 'My Quotes'] + list(M.QuoteBin.objects.filter(user=self.user))
         self.context['data_id'] = self.login_user.key
         self.context['user'] = self.user.is_authenticated()
-        self.context['bundle'] = self.bundle.key
+        self.context['project'] = self.project.key
 
     @staticmethod
     @cb.register
-    def bundle(request):
+    def project(request):
         name = request.GET.get('name').strip()
         obj, created = M.QuoteBin.objects.get_or_create(user=request.user, name=name)
         if not created:

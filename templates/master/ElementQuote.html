@@ -13,19 +13,19 @@
     <div style="float:left; margin-right: 8px; font-size: 11px; color: #7e7e7e">{{tag.text|upper}}</div>
     {% endfor %}
     <div class="clear"></div>
-    {% if user and bundles|length %}
-    <form class="add_to_bundle transform" style="margin-top:10px;">
-        <label style="color: #363637; font-size: 12px; font-weight: bold;">Add to bundle</label>
+    {% if user and projects|length %}
+    <form class="add_to_project transform" style="margin-top:10px;">
+        <label style="color: #363637; font-size: 12px; font-weight: bold;">Add to project</label>
         <div class="rowElem" style="margin-top: 7px">
             <select name="name">
-                {% for b in bundles %}
+                {% for b in projects %}
                 <option value="{{b.id}}">{{b.name}}</option>
                 {% endfor %}
             </select>
         </div>
         <input type="hidden" name="data_id" value="{{data_id}}"/>
         <input type="hidden" name="quote" value="{{id}}"/>
-        <input type='submit' value="Add to this bundle"/>
+        <input type='submit' value="Add to this project"/>
     </form>
    {% endif %}
    <div class="share-links">
