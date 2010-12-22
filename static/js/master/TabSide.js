@@ -27,7 +27,7 @@ $(function() {
             if (response.success){
                 window.location = window.location;
             } else {
-                $(that).find('.error').html('Invalid Code');
+                $(that).find('.error').html('Invalid Password');
                 $.fancybox.resize();
             }
             
@@ -43,7 +43,7 @@ $(function() {
             if (response.success){
                 $('.TabSide').replaceWith(response.html);
             } else {
-                $(that).find('.error').html('Invalid project Name');
+                $(that).find('.error').html('Invalid Project Name');
             }
             
        });
