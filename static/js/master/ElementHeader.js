@@ -11,7 +11,7 @@ $(function(){
            var data = $(that).serialize();
            $.get(AJAX_URL, data, function(response){
                 if (response.success){
-                    $('#flash_messages').html('Your code is sent. Please check your email');
+                    $('#flash_messages').html('Password has been sent to your email');
                     $.fancybox.close();
                     $('#flash_messages').fadeIn("slow", function(){
                     setTimeout(function(){$("#flash_messages").fadeOut("slow");}, 2000);});
