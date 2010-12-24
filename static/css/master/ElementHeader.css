@@ -42,18 +42,11 @@
 .create_new_quote a {
   font: italic 100%/1.0 Georgia, serif;
   font-size: 16px;
-}
-
-.create_new_quote a:link { 
   color: #0000FF;
 }
 
 .create_new_quote a:hover {
   background: #FFFF00;
-}
-
-.create_new_quote a:active { 
-  color: #00FF66;
 }
 
 .info, .success, .warning, .error2, .validation {
