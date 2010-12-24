@@ -67,7 +67,7 @@ class HeaderElement(Element):
             em = em.code
             if created:
                 user = User.objects.create_user(username=email, email=email, password=em)
-                send_mail([email], 'aih@tabulaw.com', 'Your QuotesBin code', em)
+                send_mail([email], 'aih@tabulaw.com', 'Your QuoteBin Password', em)
             return JsonResponse(json.dumps({'success': True}))
         return JsonResponse(json.dumps({'success': False, 'reason': 'Invalid Email'}))
 
