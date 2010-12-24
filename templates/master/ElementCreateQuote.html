@@ -53,6 +53,7 @@
             	<input type="text" class="text_input" name="tag" id="id_tag"/>
         	</div>
 		</div>
+<<<<<<< HEAD
         {% if not user %}
         <div class="rowElem">
             <div class="labelRowElem">
@@ -72,6 +73,10 @@
 		</div>
         {% endif %}
         <div class="rowElemRefs">
+=======
+        
+        <div class="rowElem">
+>>>>>>> f7b59e8f7472d4b8d39607e3b5385a28fd29039f
             <div class="labelRowElem">
 				<label>Reference/URL</label>
 			</div>
@@ -88,9 +93,39 @@
 		</div>
     </form>
 </div>
+
+{% if not user %}
+<div id="cquote_anon_user" class="hidden">
+    <form id="anon_user_form">
+	<div class="error"></div>
+        <div class="rowElem">
+            <div class="labelRowElem">
+		<label>Your Email (to send you a Login Code)</label>
+	    </div>
+	    <div class="quoteInput">
+    		<input type="text" class="text_input" name="email" id="id_email"/>
+	    </div>
+	</div>
+        <div class="rowElem">
+	    <div class="labelRowElem">
+		<label>Your Login Code</label>
+	    </div>
+	    <div class="quoteInput">
+		<input type="text" class="text_input" name="code" id="id_code"/>
+	    </div>
+	</div>
+	<input type="hidden" name="data_id" value="{{create_login_user}}"/>
+	<div class="saveRowElem">
+		<a href="#" class="btn1" id="save_anon" title="Submit"><span><span><b>&nbsp;</b><u>Submit</u></span></span></a>
+	</div>
+	<div class="message"></div>
+    </form>
+</div>
+<a id="inline" href="#anon_user_form"></a>
+{% endif %}
 <script type="text/javascript">
     $(function(){
-       /*$('#saveq').live('click', function(){
+	function submit_createQuote(){
            var data = $('form#cquote').serialize();
 	   $.get(AJAX_URL, data, function(json){
                  if(json.success){
@@ -99,24 +134,58 @@
                     $('#error').html(json.reason);
                  }
             });
-        });*/
+        }
+	$('a#inline').fancybox({
+					    'autoDimensions'	: false,
+					    'width'         	: 350,
+					    'height'        	: 210,
+					    'transitionIn'	: 'none',
+					    'transitionOut'	: 'none',
+					    'onStart'		: function(){$('form#anon_user_form .error').html('');$('form#anon_user_form .message').html('');}
+				    });
+	$('#save_anon').live('click', function(){$('#anon_user_form').submit(); return false;});
+	$('#anon_user_form').validate({
+	    submitHandler: function(form){
+				var data = $('form#anon_user_form').serialize();
+				$.get(AJAX_URL, data, function(json){
+				    if(json.success){
+					if(json.submit){submit_createQuote();} else {$('form#anon_user_form .message').html(json.message);}
+				    } else {
+					$('form#anon_user_form .error').html(json.reason);
+				    }
+				});
+			    },
+	    rules: {
+			'email': {
+                                email: true,
+                                required: function(element){ return $('#id_code').val() == '';}
+                                
+                        },
+                        'code': {
+                                required: function(element){ return $('#id_email').val() == '';}
+                                
+                        }
+	    },
+	    messages:{
+			'email': '<br/>You must provide an email address or QuoteBin code below',
+			'code': '<br/>You must provide an email address above or QuoteBin code',
+	    }
+	    
+	});
         $('#saveq').live('click', function(){if($('#id_title').val() == 'Quote Title...'){$('#id_title').val('');}$('#cquote').submit(); return false;});
         $('#cquote').validate({
             debug: false,
             submitHandler: function(form) {
-                            var data = $('form#cquote').serialize();
-                            $.get(AJAX_URL, data, function(json){
-                                if(json.success){
-                                    window.location = json.url;
-                                } else {
-                                    $('#error').html(json.reason);
-                                }
-                            });
+			    if ($('#id_public:checked').length == 0 && USER==false){
+				$('a#inline').trigger('click');
+			    } else {
+				submit_createQuote();
+			    }
                         },
             rules: {    
                         'title': 'required',
-                        'text': 'required',
-                        'email': {
+                        'text': 'required'
+                        /*'email': {
                                 email: true,
                                 required: function(element){ return !($('#id_public:checked').length || $('#id_code').val() != '');}
                                 
@@ -124,14 +193,14 @@
                         'code': {
                                 required: function(element){ return !($('#id_public:checked').length || $('#id_email').val() != '');}
                                 
-                        }
+                        }*/
                         
                     },
         messages: {
                     'title': 'You must provide a title for your quote',
-                    'text': 'Some quote is required',
-                    'email': '<br/>For private quotes, either provide an email (your QuoteBin code will be sent here) or your QuoteBin code',
-                    'code': '<br/>For private quotes, either provide an email (your QuoteBin code will be sent here) or your QuoteBin code'
+                    'text': 'Some quote is required'
+                    /*'email': '<br/>For private quotes, either provide an email (your QuoteBin code will be sent here) or your QuoteBin code',
+                    'code': '<br/>For private quotes, either provide an email (your QuoteBin code will be sent here) or your QuoteBin code'*/
                 }
 
         });

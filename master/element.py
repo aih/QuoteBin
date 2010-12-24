@@ -126,48 +126,54 @@ class QListElement(Element):
 
 class CreateQuoteElement(Element):
     def _prepare(self):
-        self.context = {'data_id': self.submit.key, 'types': M.DOC_CHOICES, 'user': self.user.is_authenticated()}
+        self.context = {'data_id': self.submit.key, 'types': M.DOC_CHOICES, 'user': self.user.is_authenticated(),
+                        'create_login_user': self.create_or_login_user.key}
+    
+    @staticmethod
+    @cb.register
+    def create_or_login_user(request):
+        code = request.GET.get('code').strip()
+        email = request.GET.get('email').strip()
+        if code:            
+            try:
+                email = M.EmailCode.objects.get(code=code).email
+                print email
+                user = User.objects.get(username=email)
+                print user
+                user.backend='django.contrib.auth.backends.ModelBackend'
+                login(request, user)
+                success = True
+            except Exception, e:
+                print e
+                success = False
+            return JsonResponse(json.dumps({'success':success, 'submit': True}))
+        if email_re.match(email):
+            new_code = create_code(email)
+            em, created = M.EmailCode.objects.get_or_create(email=email, defaults={'code': new_code})
+            em = em.code
+            if created:
+                user = User.objects.create_user(username=email, email=email, password=em)
+                send_mail([email], 'aih@tabulaw.com', 'Your QuotesBin code', em)
+            return JsonResponse(json.dumps({'success': True, 'submit': False, 'message': 'An email with your code has been sent to you'}))
+        return JsonResponse(json.dumps({'success': False, 'reason': 'Invalid Code or Email'}))
+            
     
     @staticmethod
     @cb.register
     def submit(request):
-        print request.__dict__
         text = request.GET.get('text')
         title = request.GET.get('title') or text[:20] + '...'
         author = request.GET.get('author')
         doc_type = request.GET.get('doctype')
         tags = request.GET.get('tag').split(',')
-        email = request.GET.get('email')
-        code = request.GET.get('code')
         references = request.GET.getlist('reference')
         is_public = request.GET.get('is_public') == 'on'
-        em = None
-        user = None
-        if email:
-            new_code = create_code(email)
-            em, created = M.EmailCode.objects.get_or_create(email=email, defaults={'code': new_code})
-            em = em.code
-            if not created and (code and code != em):
-                return JsonResponse(json.dumps({
-                    'success': False,
-                    'reason': 'Email already present. Please provide the right code which was emailed to you'
-                }))
-            if created:
-                user = User.objects.create_user(username=email, email=email, password=em)
-                send_mail([email], 'aih@tabulaw.com', 'Your QuotesBin code', em)
-        if code:
-            try:
-                em = M.EmailCode.objects.get(code=code)
-                user = User.objects.get(username=em.email)
-                user.backend='django.contrib.auth.backends.ModelBackend'
-                login(request, user)
-            except:
-                return JsonResponse(json.dumps({
-                    'success': False,
-                    'reason': 'Email already present. Please provide the right code which was emailed to you'
-                }))
-        if not user and request.user.is_authenticated():
-            user = request.user
+
+        if not is_public and not request.user.is_authenticated():
+                return JsonResponse(json.dumps({'success': False, 'reason': 'User not authenticated to make private quotes'}))
+            
+                                    
+        user = request.user
         obj = M.Quote.objects.create(user = user, text=text, author=author, doc_type=doc_type, title = title, is_public = is_public)
         
         for t in tags:
@@ -175,8 +181,9 @@ class CreateQuoteElement(Element):
         for ref in references:
             r, created = M.Reference.objects.get_or_create(text=ref)
             obj.references.add(r)
-        print references
+
         return JsonResponse(json.dumps({'success': True, 'url': '/quote/' + str(obj.link)}))
+        
 
 class QuoteElement(Element):
     def _prepare(self):
