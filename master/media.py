@@ -9,7 +9,7 @@ class HeaderTabMedia(Media):
 class HeaderElementMedia(Media):
     template = 'master/ElementHeader.html'
     css = ['master/ElementHeader.css']
-    js = ['master/ElementHeader.js']
+    js = ['jquery.confirm.js', 'master/ElementHeader.js']
 
 LoginBoxMedia = SignUpBoxMedia = HeaderBoxMedia
 LoginTabMedia = SignUpTabMedia = HeaderTabMedia

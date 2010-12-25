@@ -60,14 +60,15 @@ class HeaderElement(Element):
     @staticmethod
     @cb.register
     def get_code(request):
-        email = request.GET.get('email')
+        email = request.GET.get('email').strip()
+        print email
         if email_re.match(email):
             new_code = create_code(email)
             em, created = M.EmailCode.objects.get_or_create(email=email, defaults={'code': new_code})
             em = em.code
             if created:
                 user = User.objects.create_user(username=email, email=email, password=em)
-                send_mail([email], 'aih@tabulaw.com', 'Your QuoteBin Password', em)
+            send_mail([email], 'aih@tabulaw.com', 'Your QuoteBin Password', em)
             return JsonResponse(json.dumps({'success': True}))
         return JsonResponse(json.dumps({'success': False, 'reason': 'Invalid Email'}))
 
@@ -80,6 +81,7 @@ class SideElement(Element):
             code = self.client.id
         else:
             code = code.replace(' ','')
+        if key=='MyQuotes':key='My Quotes'
         self.context = {'name': key, 'data_id': self.get_quotes.key, 'code': code}
 
     @staticmethod
@@ -153,7 +155,7 @@ class CreateQuoteElement(Element):
             em = em.code
             if created:
                 user = User.objects.create_user(username=email, email=email, password=em)
-                send_mail([email], 'aih@tabulaw.com', 'Your QuotesBin code', em)
+            send_mail([email], 'aih@tabulaw.com', 'Your QuotesBin password', em)
             return JsonResponse(json.dumps({'success': True, 'submit': False, 'message': 'An email with your code has been sent to you'}))
         return JsonResponse(json.dumps({'success': False, 'reason': 'Invalid Code or Email'}))
             

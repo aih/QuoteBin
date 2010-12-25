@@ -25,7 +25,7 @@ $(function() {
        var data = $(that).serialize();
        $.get(AJAX_URL, data, function(response){
             if (response.success){
-                window.location = window.location;
+                window.location = window.location + 'project/MyQuotes';
             } else {
                 $(that).find('.error').html('Invalid Code');
                 $.fancybox.resize();

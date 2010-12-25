@@ -119,7 +119,7 @@
 					    'height'        	: 210,
 					    'transitionIn'	: 'none',
 					    'transitionOut'	: 'none',
-					    'onStart'		: function(){$('form#anon_user_form .error').html('');$('form#anon_user_form .message').html('');}
+					    'onStart'		: function(){$('form#anon_user_form .error').html('');$('form#anon_user_form .message').html('');$('form#anon_user_form')[0].reset();}
 				    });
 	$('#save_anon').live('click', function(){$('#anon_user_form').submit(); return false;});
 	$('#anon_user_form').validate({

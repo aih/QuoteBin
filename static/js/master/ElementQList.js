@@ -14,12 +14,17 @@ $(function() {
        });
        $('.slide2').hide();
     });
-    $('.quote_delete').live('click', function(){
-        var data = $(this).attr('data-id');
+    $('.quote_delete').click(function(){
         var that = this;
-        $.get(AJAX_URL, {'data_id': data}, function(html){
-            $(that).parent().parent().parent().remove();
+        fancyConfirm("Are you sure you want to delete this Quote", function(ret){
+            if (ret){
+                var data = $(that).attr('data-id');
+                $.get(AJAX_URL, {'data_id': data}, function(html){
+                    $(that).parent().parent().parent().remove();
+                });
+            }
         });
     });
+    
 });
 
