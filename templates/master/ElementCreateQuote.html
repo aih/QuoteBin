@@ -7,7 +7,7 @@
 			</div>
 			<div class="rowElem">
 				<div class="labelrowElem" id="makePublic">
-            		<label>Make Quote Public</label>
+            		<label>Make&nbsp;Quote&nbsp;Public</label>
         		</div>
 				<div class="quoteInput">
 					<input type="checkbox" name="is_public" id="id_public">
@@ -16,12 +16,13 @@
         </div>
         <div class="rowElem">
         	<div class="labelRowElem">
-            	<input id="id_title" class="side_text help_input" value="Quote Title..." type='text' name='title'/>
+			<label>Title&#42;</label><br/>     
+            		<input id="id_title" class="side_text help_input" type='text' name='title'/>
         	</div>
-			<div class="quoteInput">
-            	<textarea name="text" id="id_text"></textarea>
+		<div class="quoteInput">
+            		<textarea name='text' id="id_text"></textarea>
         	</div>
-		</div>
+	</div>
         <div class="rowElem">
 			<div class="rowElemLeft">
             	<div class="labelRowElem">
@@ -86,7 +87,7 @@
 	</div>
         <div class="rowElem">
 	    <div class="labelRowElem">
-		<label>Your Login Code</label>
+		<label>Your&nbsp;Password</label>
 	    </div>
 	    <div class="quoteInput">
 		<input type="text" class="text_input" name="code" id="id_code"/>
@@ -175,8 +176,8 @@
                         
                     },
         messages: {
-                    'title': 'You must provide a title for your quote',
-                    'text': 'Some quote is required'
+                    'title': 'You must provide a title for the Quote.',
+                    'text': 'You must provide text for the Quote.',
                     /*'email': '<br/>For private quotes, either provide an email (your QuoteBin code will be sent here) or your QuoteBin code',
                     'code': '<br/>For private quotes, either provide an email (your QuoteBin code will be sent here) or your QuoteBin code'*/
                 }
