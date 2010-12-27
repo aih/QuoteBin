@@ -79,8 +79,10 @@ class QListTab(Tab):
             code = self.client
             if code == 'All':
                 self.ids = M.Quote.objects.filter(is_public=True).order_by('-update_date')[:10]
+                code = 'Public Quotes'
             elif code == 'MyQuotes':
                 self.ids = M.Quote.objects.filter(user = self.user).order_by('-update_date')[:10]
+                code = 'My Quotes'
             else:
                 bin = M.QuoteBin.objects.get(id=int(self.client))
                 self.ids = bin.quote.all().order_by('-update_date')[:10]
