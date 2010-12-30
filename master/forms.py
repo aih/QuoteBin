@@ -9,10 +9,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 
-class RecommendationForm(forms.Form):
-    movie = forms.CharField(max_length = 255)
-    tags = forms.CharField(max_length = 255)
-
 class LoginForm(forms.Form):
     username = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)

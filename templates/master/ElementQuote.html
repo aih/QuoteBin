@@ -16,7 +16,7 @@
     {% if user and projects|length %}
     <form class="add_to_project transform" style="margin-top:10px;">
         <label style="color: #363637; font-size: 12px; font-weight: bold;">Add to project</label>
-        <div class="rowElem" style="margin-top: 7px">
+        <div class="rowElem" style="margin-top: 7px; margin-right:10px;">
             <select name="name">
                 {% for b in projects %}
                 <option value="{{b.id}}">{{b.name}}</option>

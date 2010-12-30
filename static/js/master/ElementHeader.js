@@ -24,7 +24,7 @@ $(function(){
                     $('#flash_messages').html('Password has been sent to your email');
                     $.fancybox.close();
                     $('#flash_messages').fadeIn("slow", function(){
-                    setTimeout(function(){$("#flash_messages").fadeOut("slow");}, 10000);});
+                    setTimeout(function(){$("#flash_messages").fadeOut("slow");}, 7000);});
                 } else {
                     $(that).find('.error').html(response.reason);
                     $.fancybox.resize();

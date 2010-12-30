@@ -273,11 +273,11 @@ a.jqTransformChecked { background-position: center bottom;}
 .jqTransformSelectWrapper  a.jqTransformSelectOpen {
 	display: block;
 	position: absolute;
-	right: 0px;
+	right: 8px;
 	top: 0px;
-	width: 31px;
+	width: 37px;
 	height: 31px;
-	background: url(/static/images/form/select_right.gif) no-repeat center center;
+    background: url(/static/images/form/select_right.gif) no-repeat center center;
 }
 
 .jqTransformSelectWrapper ul {

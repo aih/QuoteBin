@@ -31,7 +31,7 @@ def send_mail(to, sender, subject, body):
     POST = {
         'username': 'aih@tabulaw.com',
         'api_key': '3a5cfa40-68d5-4e10-aa03-0fcbee149c8d',
-        'from': 'aih@tabulaw.com',
+        'from': 'QuoteTeam@tabulaw.com',
         'from_name': sender or 'Quote',
         'to' : ';'.join(to),
         'subject': subject,
@@ -68,7 +68,7 @@ class HeaderElement(Element):
             em = em.code
             if created:
                 user = User.objects.create_user(username=email, email=email, password=em)
-            send_mail([email], 'aih@tabulaw.com', 'Your QuoteBin Password', em)
+            send_mail([email], 'QuoteTeam@tabulaw.com', 'Your QuoteBin Password', em)
             return JsonResponse(json.dumps({'success': True}))
         return JsonResponse(json.dumps({'success': False, 'reason': 'Invalid Email'}))
 
@@ -155,7 +155,7 @@ class CreateQuoteElement(Element):
             em = em.code
             if created:
                 user = User.objects.create_user(username=email, email=email, password=em)
-            send_mail([email], 'aih@tabulaw.com', 'Your QuotesBin password', em)
+            send_mail([email], 'QuoteTeam@tabulaw.com', 'Your QuotesBin password', em)
             return JsonResponse(json.dumps({'success': True, 'submit': False, 'message': 'An email with your code has been sent to you'}))
         return JsonResponse(json.dumps({'success': False, 'reason': 'Invalid Code or Email'}))
             
@@ -228,7 +228,7 @@ class LoginElement(Element):
         success = True
         user = authenticate(username=username, password=password)
         if not user:
-            error = 'Invalid Email or password'
+            error = 'Invalid email or password'
             success = False
         else:
             login(request, user)
